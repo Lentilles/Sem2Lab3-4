@@ -1,6 +1,9 @@
 #pragma once
+#include <iostream>
+
 class VendingCoffee
 {
+private:
 	bool Power;		// Power On\Off
 	bool Display;	// Display On\Off
 	bool isWork;	// True when vending fill cup
@@ -20,6 +23,7 @@ class VendingCoffee
 	double amountOfCoffee;	// How much coffee vending have now.
 	double amountOfWater;	// How much water vending have now.
 	double amountOfMilk;	// How much milk vending have now.
+	int amountOfTea;	// How much milk vending have now.
 	int amountOfCoins;		// How many coins in vending now.
 	int amountOfCash;		// How much cash in vending now.
 
@@ -29,12 +33,15 @@ class VendingCoffee
 	void sendMessage();		// send message to owner of vending machine status
 	void writeStats();		// todo
 	void switchDisplay();	// when power on - display on / off display - off.
+	void giveCup();			// give filled cup to client
+	void change(int x);		// give back money to client
+	void startcheck();		// on vending turning on start check the systems and display it 
+
 
 public:
 	void switchPower();		// Power on\off.
 	void pressButton();		// Client using vending machine
 	double  pay();			// Client paying money
-	void change();			// give back money to client
 
 };
 
