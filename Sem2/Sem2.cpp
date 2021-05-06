@@ -22,16 +22,20 @@ int main()
 		std::string YN;
 		std::cout << "Вы видите кофейный апарат впереди себя. Вам хочется кофе. Подойти? \n";
 		std::cout << "(Д)а/(Н)ет \n";
-		std::cin >> YN;
-		if (YN == "Д" || YN == "д" || YN == "Да" || YN == "да") {
+		std::cin >> YN; 
+		if (YN == "Выключить") {
+			Vending1.switchPower();
+		}else if (YN == "Включить") {
+			Vending1.switchPower();
+		}else if (YN == "Д" || YN == "д" || YN == "Да" || YN == "да" || YN == "дА" || YN == "ДА") {
 			p = true;
 			Vending1.pressButton();
 		}
-		else if (YN == "Н" || YN == "н" || YN == "Нет" || YN == "нет") {
+		else if (YN == "Н" || YN == "н" || YN == "Нет" || YN == "нет" || YN == "НЕт" || YN == "НЕТ" || YN == "нЕт" || YN == "нЕТ") {
 			std::cout << "Вы уходите, но все же может кофе? \n";
-			std::cout << "(Д)а/(Д)а/(Д)а \n";
+			std::cout << "(Д)а / (Д)а / (Д)а \n";
 			std::cin >> YN;
-			if (YN == "Д" || YN == "д" || YN == "Да" || YN == "да") {
+			if (YN == "Д" || YN == "д" || YN == "Да" || YN == "да" || YN == "дА" || YN == "ДА") {
 				p = true;
 				Vending1.pressButton();
 			}
