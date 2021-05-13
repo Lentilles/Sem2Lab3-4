@@ -21,15 +21,25 @@ void VendingCoffee::switchPower() {
 		}
 }
 
-void VendingCoffee::pressButton() {
+void VendingCoffee::MainMenu() {
 	info I1;
 	int p = 0;
+	int Sugar = 3;
+	int i = 0;
+
 	while (p != 4)
 	{
 		std::cout << "\n Вы подошли к кофейному автомату. \n";
 		std::cout << "\n 1.Чай - 20р";
 		std::cout << "\n 2.Кофе - 35р";
-		std::cout << "\n 3.Изменить количество сахара \n";
+		std::cout << "\n 3.Изменить количество сахара. Сейчас сахара | ";
+		i = 0;
+		while (i != Sugar) {
+			std::cout << "[] ";
+			i++;
+		}
+
+		std::cout << " |\n";
 		std::cout << "\n 4. Уйти. \n";
 
 		std::cin >> p;
@@ -168,7 +178,7 @@ void VendingCoffee::pressButton() {
 			isWork = false;
 		}break;
 		case 3: {
-			sugar();
+			Sugar = sugar(Sugar);
 		}break;
 		case 4: {
 			exit;
@@ -238,34 +248,43 @@ void VendingCoffee::giveCup() {
 	std::cout << "\n заберите вашу кружку! \n";
 } 
 
-void VendingCoffee::sugar() {
-	int sugar = 3;
+int VendingCoffee::sugar(int sugar) {
 	int i = 0, p = 1;
 
 	while (p == 1 || p == 2) {
-		std::cout << "Регулировка сахара: \n 1 + \n 2 - \n другое число - выход";
+		std::cout << "Регулировка сахара: \n 1 + \n 2 - \n другое число - выход \n";
 		std::cin >> p;
 		switch (p)
 		{
 		case 1: {
-			sugar++;
+			if (sugar <= 4) {
+				sugar++;
+			}
+			else
+			{
+				std::cout << "\n Максимум сахара. \n";
+			}
 		}break;
 		case 2: {
-			sugar--;
+			if (sugar > 0) {
+				sugar--;
+			}
+			else
+			{
+				std::cout << "\n Минимум сахара. \n";
+			}
 		}break;
 		default:
 			break;
 		}
-		std::cout << "\n Сахара сейчас: ";
+		std::cout << "\n Сахара сейчас: | ";
+		i = 0;
 		while (i != sugar)
 		{
-			SetConsoleCP(1252);
-			
-			std::cout << "█ ";
+			std::cout << "[] ";
 			i++;
 		}
-		SetConsoleCP(1251);
-		std::cout << "\n";
+		std::cout << " |\n";
 	}
-
+	return sugar;
 }

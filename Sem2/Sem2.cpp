@@ -29,7 +29,7 @@ int main()
 			Vending1.switchPower();
 		}else if (YN == "Д" || YN == "д" || YN == "Да" || YN == "да" || YN == "дА" || YN == "ДА") {
 			p = true;
-			Vending1.pressButton();
+			Vending1.MainMenu();
 		}
 		else if (YN == "Н" || YN == "н" || YN == "Нет" || YN == "нет" || YN == "НЕт" || YN == "НЕТ" || YN == "нЕт" || YN == "нЕТ") {
 			std::cout << "Вы уходите, но все же может кофе? \n";
@@ -37,13 +37,13 @@ int main()
 			std::cin >> YN;
 			if (YN == "Д" || YN == "д" || YN == "Да" || YN == "да" || YN == "дА" || YN == "ДА") {
 				p = true;
-				Vending1.pressButton();
+				Vending1.MainMenu();
 			}
 			else
 			{
 				std::cout << "Выбор без выбора! \n";
 				p = true;
-				Vending1.pressButton();
+				Vending1.MainMenu();
 
 			}
 		}

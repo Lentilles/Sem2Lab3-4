@@ -41,11 +41,11 @@ private:
 //	void switchDisplay();			// when power on - display on / off display - off.
 	void giveCup();					// give filled cup to client
 	int change(int x, int y);		// give back money to client
-	void sugar();
+	int sugar(int sugar);
 
 public:
 	void switchPower();		/// Power on\off.
-	void pressButton();		/// Client using vending machine
+	void MainMenu();		/// Client using vending machine
 	int pay(int cost);		/// Client paying money
 	VendingCoffee() {
 		 Power = true;		// Power On\Off
