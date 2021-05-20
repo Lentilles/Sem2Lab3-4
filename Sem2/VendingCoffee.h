@@ -2,7 +2,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <string>
-#include <algorithm>
+
 
 class VendingCoffee
 {
@@ -34,11 +34,6 @@ private:
 	struct info;
 
 
-//	void switchWork();				// turn on filling cup
-//	void displayAmounts();			// display amounts of coffee/water/milk
-//	void sendMessage();				// send message to owner of vending machine status
-//	void writeStats();				// todo
-//	void switchDisplay();			// when power on - display on / off display - off.
 	void giveCup();					// give filled cup to client
 	int change(int x, int y);		// give back money to client
 	int sugar(int sugar);

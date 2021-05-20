@@ -1,18 +1,8 @@
 ﻿#include "VendingCoffee.h"
-// реализуем автомат по продаже кофе
-
-
-// todo: 
-
-// Класс VendingCoffee
-// У класса должно быть 2 состояния в нашем случае вкл\выкл в розетку
-// У каждого состояния должны быть разные свойства, например у выключенной машины не горит экран.
-// 
 
 
 int main()
 {
-    std::string YN;
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     VendingCoffee Vending1;

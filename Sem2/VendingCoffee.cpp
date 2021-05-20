@@ -12,8 +12,6 @@ void VendingCoffee::switchPower() {
 		Power = !Power;
 		if (Power == true) {
 			Display = true;
-			//startcheck();
-			//sendMessage();
 		}
 		else {
 			Display = false;
@@ -48,23 +46,18 @@ void VendingCoffee::MainMenu() {
 		case 1: {
 			int payed = 0;
 			int cost = 20;
-			std::cout << amountOfTea << " чай \n";
-			std::cout << amountOfWater << " вода \n";
 			if (amountOfTea <= 0) {
 				std::cout << "\n К сожалению, чай закончился.";
 				std::cout << "\n Мы уже вызвали работника, чтобы он восполнил запас.";
-				// todo call service
 				std::cout << "\n А пока вы можете заказать что-то другое.";
 			}
 			else if (amountOfWater <= 0) {
 				std::cout << "\n К сожалению вода закончилась.";
 				std::cout << "\n Мы уже вызвали работника, чтобы он восполнил запас.";
-				// todo call service
 			}
 			else if (amountOfCups <= 0) {
 				std::cout << "\n К сожалению чашки кончились.";
 				std::cout << "\n Мы уже вызвали работника, чтобы он восполнил запас.";
-				// todo call service
 			}
 			else if (amountOfCovers <= 0) {
 				std::cout << "\n К сожалению крышки кончились.";
@@ -112,24 +105,19 @@ void VendingCoffee::MainMenu() {
 		}break;
 		case 2: {
 			int payed = 0;
-			int cost = 20;
-			std::cout << amountOfCoffee << " кофе \n";
-			std::cout << amountOfMilk << " молоко \n";
-			if (amountOfTea <= 0) {
+			int cost = 35;
+			if (amountOfCoffee <= 0) {
 				std::cout << "\n К сожалению, кофе закончился.";
 				std::cout << "\n Мы уже вызвали работника, чтобы он восполнил запас.";
-				// todo call service
 				std::cout << "\n А пока вы можете заказать что-то другое.";
 			}
 			else if (amountOfMilk <= 0) {
 				std::cout << "\n К сожалению вода закончилась.";
 				std::cout << "\n Мы уже вызвали работника, чтобы он восполнил запас.";
-				// todo call service
 			}
 			else if (amountOfCups <= 0) {
 				std::cout << "\n К сожалению чашки кончились.";
 				std::cout << "\n Мы уже вызвали работника, чтобы он восполнил запас.";
-				// todo call service
 			}
 			else if (amountOfCovers <= 0) {
 				std::cout << "\n К сожалению крышки кончились.";
@@ -140,12 +128,12 @@ void VendingCoffee::MainMenu() {
 				std::cout << "\n (Д)а/(Н)ет \n";
 				std::cin >> YN;
 				if (YN == "Н" || YN == "н" || YN == "Нет" || YN == "нет" || YN == "НЕт" || YN == "НЕТ" || YN == "нЕт" || YN == "нЕТ") {
-					std::cout << "Доброго дня! \n";
+					std::cout << "До свидания! \n";
 					exit;
 				}
 			}
 			else {
-				std::cout << "\n \n Внесите оплату 20 рублей. (Число)";
+				std::cout << "\n \n Внесите оплату 35 рублей. (Число)";
 				payed = pay(cost);
 				std::cout << "\n Ваша сдача: " << change(payed, cost);
 			}
@@ -238,8 +226,8 @@ int VendingCoffee::pay(int cost) {
 	return payed;
 } 
 
-int VendingCoffee::change(int x, int y) {
-	return x - y;
+int VendingCoffee::change(int payed, int cost) {
+	return payed - cost;
 }
 
 void VendingCoffee::giveCup() {
@@ -288,3 +276,4 @@ int VendingCoffee::sugar(int sugar) {
 	}
 	return sugar;
 }
+
