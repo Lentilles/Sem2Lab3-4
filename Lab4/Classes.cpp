@@ -13,9 +13,127 @@ int random(int min, int max) //range
 	return min + rand() % ((max + 1) - min);
 }
 
-void StudentBook::menu(){
-	int Amount[2];
+void StudentBook::calcCredits() {
+	int i = 0;
+	std::cout << "\nЗаполнение зачетов";
+	while (i < Amount[0]) {
+		int k = 0;
+		std::cout << "\n1 - Зачтено" << "\n2 - Незачтено" << "\n3 - Случайное значение \n";
+		std::cin >> k;
+
+		switch (k)
+		{
+		case 1: {
+			credit[i] = "Зачтено";
+		}break;
+		case 2: {
+			credit[i] = "Незачтено";
+		}break;
+		case 3: {
+			if (random(0, 1) == 0) {
+				credit[i] = "Незачтено";
+			}
+			else
+			{
+				credit[i] = "Зачтено";
+			}
+		}break;
+		default:
+			break;
+		}
+		i++;
+	}
+}
+
+
+void StudentBook::calcExam() {
 	int Grade = 0;
+	int i = 0;
+	std::cout << "\nЗаполнение экзаменов";
+	while (i < Amount[1]) {
+		int k = 0;
+		std::cout << "\n1 - 2" << "\n2 - 3" << "\n3 - 4" << "\n4 - 5" << "\n5 - Случайное значение";
+		std::cout << i;
+		std::cin >> k;
+
+		switch (k)
+		{
+		case 1: {
+			exams[i] = 2;
+		}break;
+		case 2: {
+			exams[i] = 3;
+		}break;
+		case 3: {
+			exams[i] = 4;
+		}break;
+		case 4: {
+			exams[i] = 5;
+		}break;
+
+		case 5: {
+			Grade = random(2, 5);
+			switch (Grade)
+			{
+			case 2: {
+				exams[i] = Grade;
+			}break;
+			case 3: {
+				exams[i] = Grade;
+			}break;
+			case 4: {
+				exams[i] = Grade;
+			}break;
+			case 5: {
+				exams[i] = Grade;
+			}break;
+			}
+		}break;
+		default: {i--; std::cout << "\n Неверное значение \n"; }
+			   break;
+		}
+		i++;
+	}
+}
+
+void StudentBook::autoComplete() {
+	int i = 0;
+	while (i < Amount[0]) {
+		if (random(0, 1) == 0) {
+			credit[i] = "Незачтено";
+		}
+		else
+		{
+			credit[i] = "Зачтено";
+		}
+		i++;
+	}
+	i = 0;
+	while (i < Amount[1]) {
+		int Grade = random(2, 5);
+		switch (Grade)
+		{
+		case 2: {
+			exams[i] = Grade;
+		}break;
+		case 3: {
+			exams[i] = Grade;
+		}break;
+		case 4: {
+			exams[i] = Grade;
+		}break;
+		case 5: {
+			exams[i] = Grade;
+		}break;
+		default:
+			break;
+		}
+		i++;
+	}
+
+}
+
+void StudentBook::menu(){
 	int p = 0;
 	
 	std::cout << "\nВведите количество зачетов в этом семестре: ";
@@ -33,122 +151,14 @@ void StudentBook::menu(){
 	{
 		// Самостоятельное заполнение
 	case 1: {
-		int i = 0;
-		std::cout << "\nЗаполнение зачетов";
-		while (i < Amount[0]) {
-			int k = 0;
-			std::cout << "\n1 - Зачтено" << "\n2 - Незачтено" << "\n3 - Случайное значение";
-			std::cin >> k;
-
-			switch (k)
-			{
-			case 1: {
-				credit[i] = "Зачтено";
-			}break;
-			case 2: {
-				credit[i] = "Незачтено";
-			}break;
-			case 3: {
-				if (random(0, 1) == 0) {
-					credit[i] = "Незачтено";
-				}
-				else
-				{
-					credit[i] = "Зачтено";
-				}
-			}break;
-			default:
-				break;
-			}
-			i++;
-		}
-		i = 0;
-		std::cout << "\nЗаполнение экзаменов";
-		while (i < Amount[1]) {
-			int k = 0;
-			std::cout << "\n1 - 2" << "\n2 - 3" << "\n 3 - 4" << "\n 4 - 5" << "\ 5 - Случайное значение";
-			std::cin >> k;
-
-			switch (k)
-			{
-			case 1: {
-				exams[i] = 2;
-			}break;
-			case 2: {
-				exams[i] = 3;
-			}break;
-			case 3: {
-				exams[i] = 4;
-			}break;
-			case 4: {
-				exams[i] = 5;
-			}break;
-
-			case 5: {
-				Grade = random(2, 5);
-				switch (Grade)
-				{
-				case 2: {
-					exams[i] = Grade;
-				}break;
-				case 3: {
-					exams[i] = Grade;
-				}break;
-				case 4: {
-					exams[i] = Grade;
-				}break;
-				case 5: {
-					exams[i] = Grade;
-				}break;
-				default:
-					break;
-				}
-			default:
-				break;
-			}
-
-				  i++;
-			}
-		} break;
+		calcCredits();
+		calcExam();
+		
 	}break;
 
 		// Автоматическое заполнение
 	case 2: {
-		int i = 0;
-		while (i < Amount[0]) {
-			if (random(0, 1) == 0) {
-				credit[i] = "Незачтено";
-			}
-			else
-			{
-				credit[i] = "Зачтено";
-			}
-			i++;
-		}
-
-		while (i < Amount[1]) {
-			int Grade = random(2, 5);
-			switch (Grade)
-			{
-			case 2: {
-				exams[i] = Grade;
-			}break;
-			case 3: {
-				exams[i] = Grade;
-			}break;
-			case 4: {
-				exams[i] = Grade;
-			}break;
-			case 5: {
-				exams[i] = Grade;
-			}break;
-			default:
-				break;
-				i++;
-			}
-			i++;
-		}
-
+		autoComplete();
 	}break;
 
 	default: std::cout << "Неверное значение. Выход.";
@@ -162,7 +172,7 @@ void StudentBook::menu(){
 	}
 	i = 0;
 	while (i != Amount[1]) {
-		std::cout << "\n Зачет: " << exams[i];
+		std::cout << "\n Экзамен: " << exams[i];
 		i++;
 	}
 
@@ -172,7 +182,7 @@ void StudentBook::menu(){
 		std::cout << "\nМеню";
 		std::cout << "\n1 - Вывести среднее значение";
 		std::cout << "\n2 - Отредактировать данные";
-		std::cout << "\n3 - Выход из программы";
+		std::cout << "\n3 - Выход из программы\n";
 
 		int k;
 		std::cin >> k;
@@ -180,132 +190,24 @@ void StudentBook::menu(){
 		switch (k)
 		{
 		case 1: {
-			averageGrade(exams);
+			std::cout << averageGrade(exams);
 		}break;
 		case 2: {
 			std::cout << "\n\nХотите сами заполнить оценки или проставить случайные значения?";
-			std::cout << "\n1 - Самостоятельно" << "\n2 - Случайные значения";
+			std::cout << "\n1 - Самостоятельно" << "\n2 - Случайные значения\n";
 			std::cin >> p;
 			switch (p)
 			{
+
 				// Самостоятельное заполнение
 			case 1: {
-				int i = 0;
-				std::cout << "\nЗаполнение зачетов";
-				while (i < Amount[0]) {
-					int k = 0;
-					std::cout << "\n1 - Зачтено" << "\n2 - Незачтено" << "\n3 - Случайное значение \n";
-					std::cin >> k;
-
-					switch (k)
-					{
-					case 1: {
-						credit[i] = "Зачтено";
-					}break;
-					case 2: {
-						credit[i] = "Незачтено";
-					}break;
-					case 3: {
-						if (random(0, 1) == 0) {
-							credit[i] = "Незачтено";
-						}
-						else
-						{
-							credit[i] = "Зачтено";
-						}
-					}break;
-					default:
-						break;
-					}
-					i++;
-				}
-				i = 0;
-				std::cout << "\nЗаполнение экзаменов kkew";
-				while (i < Amount[1]) {
-					int k = 0;
-					std::cout << "\n1 - 2" << "\n2 - 3" << "\n3 - 4" << "\n4 - 5" << "\n5 - Случайное значение";
-					std::cin >> k;
-
-					switch (k)
-					{
-					case 1: {
-						exams[i] = 2;
-					}break;
-					case 2: {
-						exams[i] = 3;
-					}break;
-					case 3: {
-						exams[i] = 4;
-					}break;
-					case 4: {
-						exams[i] = 5;
-					}break;
-
-					case 5: {
-						Grade = random(2, 5);
-						switch (Grade)
-						{
-						case 2: {
-							exams[i] = Grade;
-						}break;
-						case 3: {
-							exams[i] = Grade;
-						}break;
-						case 4: {
-							exams[i] = Grade;
-						}break;
-						case 5: {
-							exams[i] = Grade;
-						}break;
-						default:
-							break;
-						}
-					}break;
-					default: i--; std::cout << "\n Неверное значение \n";
-						break;
-
-					}
-					i++;
-				}
+				calcCredits();
+				calcExam();
 			}break;
 
 				// Автоматическое заполнение
 			case 2: {
-				int i = 0;
-				while (i < Amount[0]) {
-					if (random(0, 1) == 0) {
-						credit[i] = "Незачтено";
-					}
-					else
-					{
-						credit[i] = "Зачтено";
-					}
-					i++;
-				}
-
-				while (i < Amount[1]) {
-					int Grade = random(2, 5);
-					switch (Grade)
-					{
-					case 2: {
-						exams[i] = Grade;
-					}break;
-					case 3: {
-						exams[i] = Grade;
-					}break;
-					case 4: {
-						exams[i] = Grade;
-					}break;
-					case 5: {
-						exams[i] = Grade;
-					}break;
-					default:
-						break;
-						i++;
-					}
-					i++;
-				}
-
+				autoComplete();
 			}break;
 
 			default: std::cout << "Неверное значение. Выход.";
@@ -319,16 +221,13 @@ void StudentBook::menu(){
 			}
 			i = 0;
 			while (i != Amount[1]) {
-				std::cout << "\n Зачет: " << exams[i];
+				std::cout << "\n Экзамен: " << exams[i];
 				i++;
 			}
 		}break;
 		case 3: {
-			exams = NULL;
-			credit = NULL;
-			delete exams, credit;
-			exit(0);
-		}
+			break;
+		}break;
 		default:
 			break;
 		}

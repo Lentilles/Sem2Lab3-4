@@ -17,12 +17,13 @@ protected:
 		
 		while (i != size) {
 			sum += examens[i];
+			i++;
 		}
 		return sum / size;
 	}
 };
 
-class StudentBook : protected StudyDocs {
+class StudentBook : StudyDocs {
 public:
 	void menu() override;
 protected: 
@@ -34,6 +35,7 @@ protected:
 
 		while (i != size) {
 			sum += examens[i];
+			i++;
 		}
 		return sum / size;
 	}
@@ -44,6 +46,11 @@ private:
 
 	void createCredits(int Amount);
 	void createExams(int Amount);
+	void autoComplete();
+	void calcExam();
+	void calcCredits();
+	int Amount[2];
+
 };
 
 /*
