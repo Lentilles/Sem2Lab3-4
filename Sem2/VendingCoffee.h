@@ -42,6 +42,7 @@ public:
 	void switchPower();		/// Power on\off.
 	void MainMenu();		/// Client using vending machine
 	int pay(int cost);		/// Client paying money
+
 	VendingCoffee() {
 		 Power = true;		// Power On\Off
 		 Display = true;	// Display On\Off
